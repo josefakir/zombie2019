@@ -1,0 +1,275 @@
+<template>
+  <div class="page" data-name="saludfinanciera">
+    <!-- Top Navbar -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="right">
+          <a href="#" class="link icon-only panel-open" data-panel="right">
+            <i class="icon f7-icons if-not-md">menu</i>
+            <i class="icon material-icons if-md">menu</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar toolbar-bottom">
+      <div class="toolbar-inner">
+        <a href="/" class="tab-link">
+          <i class="material-icons">home</i>
+        </a>
+        <a href="/saludfinanciera/" class="tab-link">
+          <i class="material-icons">attach_money</i>
+        </a>
+        <a href="/metas/" class="tab-link">
+          <i class="material-icons">done</i>
+        </a>
+        <a href="/recordatorios/" class="tab-link">
+          <i class="material-icons">access_time</i>
+        </a>
+        <a href="/configuracion/" class="tab-link">
+          <i class="material-icons">apps</i>
+        </a>
+      </div>
+    </div>
+    <div class="fab fab-right-bottom color-green">
+      <a href="#">
+        <i class="material-icons">add</i>
+      </a>
+      <!-- FAB speed dial actions with labels -->
+      <div class="fab-buttons fab-buttons-top">
+        <a href="#" class="fab-label-button sheet-open" data-sheet=".ingresos-fijos" id="btn_nuevo_if">
+          <span>1</span>
+          <span class="fab-label">Ingreso Fijo</span>
+        </a>
+        <a href="#" class="fab-label-button sheet-open" data-sheet=".ingresos-variables" id="btn_nuevo_iv">
+          <span>2</span>
+          <span class="fab-label">Ingreso Variable</span>
+        </a>
+      </div>
+    </div>
+    <div class="sheet-modal gastos-fijos">
+      <div class="toolbar">
+        <div class="toolbar-inner" style="background: #ff3b30">
+          <div class="left"><a class="link sheet-close" href="#">Cancelar</a></div>
+          <div class="right"><a class="link sheet-close" href="#" id="btn_guardar_gasto_fijo">Guardar</a></div>
+        </div>
+      </div>
+      <div class="sheet-modal-inner">
+        <div class="block">
+          <form class="list">
+           <ul>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-input-wrap">
+                    <div class="item-title item-label">Etiqueta</div>
+                    <input type="text" name="nombre" placeholder="Ej. Renta" id="etiqueta_gf">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Cantidad</div>
+                  <div class="item-input-wrap">
+                    <input type="number" name="cantidad" placeholder="Ej. 100" id="cantidad_gf">
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="sheet-modal gastos-variables">
+    <div class="toolbar">
+      <div class="toolbar-inner" style="background: #ff3b30">
+        <div class="left"><a class="link sheet-close" href="#">Cancelar</a></div>
+        <div class="right"><a class="link sheet-close" href="#" id="btn_guardar_gasto_variable">Guardar</a></div>
+      </div>
+    </div>
+    <div class="sheet-modal-inner">
+      <div class="block">
+        <form class="list">
+         <ul>
+          <li>
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-input-wrap">
+                  <div class="item-title item-label">Etiqueta</div>
+                  <input type="text" name="nombre" placeholder="Ej. Compra de café" id="etiqueta_gv">
+                </div>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="item-content item-input">
+              <div class="item-inner">
+                <div class="item-title item-label">Cantidad</div>
+                <div class="item-input-wrap">
+                  <input type="number" name="cantidad" placeholder="Ej. 100" id="cantidad_gv">
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="sheet-modal ingresos-fijos">
+  <div class="toolbar">
+    <div class="toolbar-inner" style="background: #4cd964">
+      <div class="left"><a class="link sheet-close" href="#">Cancelar</a></div>
+      <div class="right"><a class="link sheet-close" href="#" id="btn_guardar_ingreso_fijo">Guardar</a></div>
+    </div>
+  </div>
+  <div class="sheet-modal-inner">
+    <div class="block">
+      <form class="list">
+       <ul>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-input-wrap">
+                <div class="item-title item-label">Etiqueta</div>
+                <input type="text" name="nombre" placeholder="Ej. Sueldo" id="etiqueta_if">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Cantidad</div>
+              <div class="item-input-wrap">
+                <input type="number" name="cantidad" placeholder="Ej. 100" id="cantidad_if">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>
+</div>
+<div class="sheet-modal ingresos-variables">
+  <div class="toolbar">
+    <div class="toolbar-inner" style="background: #4cd964">
+      <div class="left"><a class="link sheet-close" href="#">Cancelar</a></div>
+      <div class="right"><a class="link sheet-close" href="#" id="btn_guardar_ingreso_variable">Guardar</a></div>
+    </div>
+  </div>
+  <div class="sheet-modal-inner">
+    <div class="block">
+      <form class="list">
+       <ul>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-input-wrap">
+                <div class="item-title item-label">Etiqueta</div>
+                <input type="text" name="nombre" placeholder="Ej. Proyecto temporal" id="etiqueta_iv">
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div class="item-content item-input">
+            <div class="item-inner">
+              <div class="item-title item-label">Cantidad</div>
+              <div class="item-input-wrap">
+                <input type="number" name="cantidad" placeholder="Ej. 100" id="cantidad_iv">
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </form>
+  </div>
+</div>
+</div>
+<div class="fab fab-left-bottom color-red">
+  <a href="#">
+    <i class="material-icons">add</i>
+  </a>
+  <!-- FAB speed dial actions with labels -->
+  <div class="fab-buttons fab-buttons-top">
+    <a href="#" class="fab-label-button sheet-open" data-sheet=".gastos-fijos" id="btn_nuevo_gf">
+      <span>1</span>
+      <span class="fab-label">Gasto Fijo</span>
+    </a>
+    <a href="#" class="fab-label-button sheet-open" data-sheet=".gastos-variables" id="btn_nuevo_gv">
+      <span>2</span>
+      <span class="fab-label">Gasto Variable</span>
+    </a>
+  </div>
+</div>
+<!-- Scrollable page content-->
+<div class="page-content">
+  <div class="block">
+    <h1>Salud Financiera</h1>
+    
+    <div class="row card">
+      <!-- Each "cell" has col-[width in percents] class -->
+      <div class="col-50">
+        <select name="anio" id="anio_financiera" class="p10">
+          <option value="2018">2018</option>
+          <option value="2019">2019</option>
+          <option value="2020">2020</option>
+          <option value="2021">2021</option>
+          <option value="2022">2022</option>
+          <option value="2023">2023</option>
+          <option value="2024">2024</option>
+          <option value="2025">2025</option>
+          <option value="2026">2026</option>
+          <option value="2027">2027</option>
+          <option value="2028">2028</option>
+          <option value="2029">2029</option>
+          <option value="2030">2030</option>
+        </select>
+      </div>
+      <div class="col-50">
+        <select name="mes" id="mes_financiera" class="p10">
+          <option value="01">Enero</option>
+          <option value="02">Febrero</option>
+          <option value="03">Marzo</option>
+          <option value="04">Abril</option>
+          <option value="05">Mayo</option>
+          <option value="06">Junio</option>
+          <option value="07">Julio</option>
+          <option value="08">Agosto</option>
+          <option value="09">Septiembre</option>
+          <option value="10">Octubre</option>
+          <option value="11">Noviembre</option>
+          <option value="12">Diciembre</option>
+        </select>
+      </div>
+    </div>
+    <div class="card data-table">
+      <table>
+        <thead>
+          <tr>
+            <th class="label-cell">Etiqueta</th>
+            <th class="label-cell" style="width: 50px">Tipo</th>
+            <th class="numeric-cell">Cantidad</th>
+            <th><a href="#" class="eliminar_movimiento_financiero"><i class="fa fa-times-circle" aria-hidden="true"></i></a></th>
+          </tr>
+        </thead>
+        <tbody id="tabla_gastos">
+          
+        </tbody>
+      </table>
+      <p class="tac">Markup:</p>
+      <h2 id="total" class="tac"></h2>
+      <p>&nbsp;</p>
+      <p>&nbsp;</p>
+    </div>
+  </div>
+</div>
+</div>
+</template>
+<script>
+  export default {}
+</script>

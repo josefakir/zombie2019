@@ -1,0 +1,99 @@
+<template>
+  <div class="page" data-name="recordatorios">
+    <!-- Top Navbar -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="right">
+          <a href="#" class="link icon-only panel-open" data-panel="right">
+            <i class="icon f7-icons if-not-md">menu</i>
+            <i class="icon material-icons if-md">menu</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar toolbar-bottom">
+      <div class="toolbar-inner">
+        <a href="/" class="tab-link">
+          <i class="material-icons">home</i>
+        </a>
+        <a href="/saludfinanciera/" class="tab-link">
+          <i class="material-icons">attach_money</i>
+        </a>
+        <a href="/metas/" class="tab-link">
+          <i class="material-icons">done</i>
+        </a>
+        <a href="/recordatorios/" class="tab-link">
+          <i class="material-icons">access_time</i>
+        </a>
+        <a href="/configuracion/" class="tab-link">
+          <i class="material-icons">apps</i>
+        </a>
+      </div>
+    </div>
+    <!-- Scrollable page content-->
+    <div class="page-content">
+        <h1 class="tac">Agregar recordatorio:</h1>
+        <form class="list">
+           <ul>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Nombre de recordatorio</div>
+                  <div class="item-input-wrap">
+                    <input type="text" name="nombre" placeholder="Recoger ropa de tintorería" id="input_nombre_recordatorio">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Descripción de recordatorio</div>
+                  <div class="item-input-wrap">
+                    <input type="text" name="nombre" placeholder="Recóge la tintorería antes de las 8" id="input_descripcion_recordatorio">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Fecha</div>
+                  <div class="item-input-wrap">
+                    <input type="text" name="nombre" placeholder="Elija la fecha" id="calendar-input">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Hora</div>
+                  <div class="item-input-wrap">
+                    <input type="text" placeholder="Elige la hora" readonly="readonly" id="demo-picker-describe"/>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+            </li>
+            <li>
+              <div class="w80">
+              <p>&nbsp;</p>
+                <button class="col button button-raised button-fill" id="btn_guardar_recordatorio">Guardar</button>
+                <p>&nbsp;</p>
+              </div>
+            </li>
+          </ul>
+        </form>
+        <p>&nbsp;</p>
+        <div class="w80">
+              <a id="btn_abrir_calendario" class="col button button-raised button-fill">Ver todos los recordatorios</a>
+        </div>
+    </div>
+    
+  </div>
+</template>
+<script>
+  export default {}
+</script>

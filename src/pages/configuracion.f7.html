@@ -1,0 +1,99 @@
+<template>
+  <div class="page" data-name="configuracion">
+    <!-- Top Navbar -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="right">
+          <a href="#" class="link icon-only panel-open" data-panel="right">
+            <i class="icon f7-icons if-not-md">menu</i>
+            <i class="icon material-icons if-md">menu</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar toolbar-bottom">
+      <div class="toolbar-inner">
+        <a href="/" class="tab-link">
+          <i class="material-icons">home</i>
+        </a>
+        <a href="/saludfinanciera/" class="tab-link">
+          <i class="material-icons">attach_money</i>
+        </a>
+        <a href="/metas/" class="tab-link">
+          <i class="material-icons">done</i>
+        </a>
+        <a href="/recordatorios/" class="tab-link">
+          <i class="material-icons">access_time</i>
+        </a>
+        <a href="/configuracion/" class="tab-link">
+          <i class="material-icons">apps</i>
+        </a>
+      </div>
+    </div>
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block">
+        <img src="static/images/default-user-avatar.png" alt="" id="avatar">
+        <p>&nbsp;</p>
+        <a href="#" id="takePhoto" class="col button button-raised button-fill">Cambiar Avatar</a>
+        <canvas id="myCanvas"></canvas>
+        <p class="tac"><a href="" id="rotar"><i class="material-icons">rotate_right</i></a></p>
+        <a href="#" id="guardarAvatar" class="col button button-raised button-fill">Guardar Avatar</a>
+        <h1 id="correo"></h1>
+      </div>
+      <div class="list simple-list no-hairlines-md">
+      <ul>
+        <li>
+          <span>Recordatorio:</span>
+          <label id="togglemananas" class="toggle toggle-init color-orange">
+            <input type="checkbox" >
+            <span class="toggle-icon"></span>
+          </label>
+        </li>
+        <li id="hora_manana">
+          <div class="block-title"></div>
+          <div class="list no-hairlines-md">
+            <ul>
+              <li>
+                <div class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-input-wrap">
+                      <input type="text" placeholder="Elige la hora" readonly="readonly" id="demo-picker-describe"/>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+        <li>
+          <span>Recordatorio por las noches:</span>
+          <label id="toggletardes" class="toggle toggle-init color-orange">
+            <input type="checkbox" >
+            <span class="toggle-icon"></span>
+          </label>
+        </li>
+        <li id="hora_tarde">
+          <div class="block-title"></div>
+          <div class="list no-hairlines-md">
+            <ul>
+              <li>
+                <div class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-input-wrap">
+                      <input type="text" placeholder="Elige la hora" readonly="readonly" id="demo-picker-describe2"/>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </div>
+  </div>
+</template>
+<script>
+  export default {}
+</script>

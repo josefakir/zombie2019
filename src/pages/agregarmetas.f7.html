@@ -1,0 +1,107 @@
+<template>
+  <div class="page" data-name="agregarmetas">
+    <!-- Top Navbar -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="right">
+          <a href="#" class="link icon-only panel-open" data-panel="right">
+            <i class="icon f7-icons if-not-md">menu</i>
+            <i class="icon material-icons if-md">menu</i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="toolbar toolbar-bottom">
+      <div class="toolbar-inner">
+        <a href="/" class="tab-link">
+          <i class="material-icons">home</i>
+        </a>
+        <a href="/saludfinanciera/" class="tab-link">
+          <i class="material-icons">attach_money</i>
+        </a>
+        <a href="/metas/" class="tab-link">
+          <i class="material-icons">done</i>
+        </a>
+        <a href="/recordatorios/" class="tab-link">
+          <i class="material-icons">access_time</i>
+        </a>
+        <a href="/configuracion/" class="tab-link">
+          <i class="material-icons">apps</i>
+        </a>
+      </div>
+    </div>
+    <!-- Scrollable page content-->
+    <div class="page-content">
+      <div class="block">
+        <form class="list">
+           <ul>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Nombre de meta</div>
+                  <div class="item-input-wrap">
+                    <input type="text" name="nombre" placeholder="Comprar un automovil" id="meta_etiqueta">
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Categoría</div>
+                  <div class="item-input-wrap">
+                    <select id="meta_tipo">
+                    <option value="">-Seleccione-</option>
+                    <option value="1">Espiritual</option>
+                    <option value="2">Círculo Cercano</option>
+                    <option value="3">Física</option>
+                    <option value="4">Laboral</option>
+                    <option value="5">Responsabilidad Social</option>
+                  </select>
+                  </div>
+                </div>
+              </div>
+            </li>
+             <li>
+              <div class="item-content item-input">
+                <div class="item-inner">
+                  <div class="item-title item-label">Tareas:</div>
+                  <div class="item-input-wrap">
+                    <input type="text" name="nombre" placeholder="Ahorrar 50 pesos diarios" id="tarea_etiqueta">
+                    <a href="#" id="btn_agregar_tarea"><i class="material-icons">add</i></a>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="card data-table">
+              <table>
+                <thead>
+                  <tr>
+                    <th class="label-cell">Etiqueta</th>
+                    <th style="width: 20px"><a href="#" class="eliminar_movimiento_financiero"><i class="fa fa-times-circle" aria-hidden="true"></i></a></th>
+                  </tr>
+                </thead>
+                <tbody id="tabla_metas">
+                  
+                </tbody>
+              </table>
+            </div>
+            </li>
+            <li>
+              <div class="w80">
+              <p>&nbsp;</p>
+              <button class="col button button-raised button-fill" id="btn_guardar_meta">Guardar</button>
+              <p>&nbsp;</p>
+              </div>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </div>
+    
+  </div>
+</template>
+<script>
+  export default {}
+</script>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--
+  Customize this policy to fit your own app's needs. For more guidance, see:
+      https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+  Some notes:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+      * Enable inline JS: add 'unsafe-inline' to default-src
+  -->
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+
+  <meta name="theme-color" content="#007aff">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>Soy Zombie</title>  
+  <!-- built styles file will be auto injected -->
+</head>
+<body>
+  <div id="app">
+    <!-- Status bar overlay for fullscreen mode-->
+    <div class="statusbar"></div>
+    <!-- Left panel with cover effect-->
+    <!-- Right panel with reveal effect-->
+    <div class="panel panel-right panel-reveal theme-dark">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-inner">
+              <div class="title">Menú</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block menuright">
+              <ul>
+                <li><a href="/" class="panel-close"><span><i class="material-icons">home</i></span><span class="etiqueta_menu">Inicio</span></a></li>
+                <li><a href="/saludfinanciera/" class="panel-close"><span><i class="material-icons">attach_money</i></span><span class="etiqueta_menu">Salud Financiera</span></a></li>
+                <li><a href="/metas/" class="panel-close"><span><i class="material-icons">done</i></span><span class="etiqueta_menu">Metas</span></a></li>
+                <li><a href="/recordatorios/" class="panel-close"><span><i class="material-icons">access_time</i></span><span class="etiqueta_menu">Recordatorios</span></a></li>
+                <li><a href="/configuracion/" class="panel-close"><span><i class="material-icons">apps</i></span><span class="etiqueta_menu">Configuración</span></a></li>
+                <li><a id="logout" href="#" class="panel-close"><span><i class="material-icons">clear</i></span><span class="etiqueta_menu">Cerrar Sesión</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+
+    <!-- Views/Tabs container -->
+    <div class="views tabs safe-areas">
+      <!-- Tabbar for switching views-tabs -->
+      <!--<div class="toolbar toolbar-bottom tabbar-labels">
+        <div class="toolbar-inner">
+          <a href="#view-dashboard" class="tab-link">
+            <i class="material-icons">home</i>
+            <span class="tabbar-label">Inicio</span>
+          </a>
+          <a href="#view-salud" class="tab-link">
+            <i class="material-icons">attach_money</i>
+            <span class="tabbar-label">Salud Financiera</span>
+          </a>
+          <a href="#view-metas" class="tab-link">
+            <i class="material-icons">done</i>
+            <span class="tabbar-label">Metas</span>
+          </a>
+          <a href="#view-recordatorios" class="tab-link">
+            <i class="material-icons">access_time</i>
+            <span class="tabbar-label">Recordatorios</span>
+          </a>
+          <a href="" class="tab-link">
+            <i class="icon material-icons if-md">menu</i>
+            <span class="tabbar-label">Más</span>
+          </a>
+        </div>
+      </div>-->
+
+      <div id="view-home" class="view view-main view-init" data-url="/">
+        <!-- Home page will be loaded here dynamically from / route -->
+      </div>
+     
+    </div>
+
+    <!-- Login Screen -->
+    <div class="login-screen" id="my-login-screen">
+      <div class="view">
+        <div class="page" data-name="login">
+          <div class="page-content login-screen-content">
+            <div class="login-screen-title">Iniciar Sesión</div>
+            <div class="list">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Correo electrónico</div>
+                    <div class="item-input-wrap">
+                      <input type="email" name="username" placeholder="hola@ejemplo.com">
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Contraseña</div>
+                    <div class="item-input-wrap">
+                      <input id="input_password" type="password" name="password" placeholder="*****">
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="list">
+              <ul>
+                <li>
+                  <a id="btn_login" href="#" class="item-link list-button login-button">Iniciar Sesión</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% if (process.env.TARGET === 'cordova') { %>
+  <script src="cordova.js"></script>
+  <% } %>
+  <script src="static/js/jquery-3.4.1.min.js"></script>
+  <script>
+/*    $(document).ready(function(){
+       alert('ready');
+       var auth = localStorage.getItem('auth');
+       alert(auth);
+    })
+    */
+  </script>
+  <!-- built script files will be auto injected -->
+</body>
+</html>
