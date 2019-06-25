@@ -16,47 +16,6 @@ var URL_WS = 'https://graphicsandcode.com/proyectos/zombieapi/';
 
 /* FUNCTIONS */
 
-var resize_image = function(img,canvas,max_width,max_height){
-  var ctx = canvas.getContext("2d")
-  var canvasCopy = document.createElement("canvas")
-  var copyContext = canvasCopy.getContext("2d")
-  var ratio = 1
-  if(img.width > max_width){
-    ratio = max_width / img.width
-  }else if(img.height > max_height){
-    ratio = max_height / img.height
-  }
-  canvasCopy.width = img.width
-  canvasCopy.height = img.height
-  copyContext.drawImage(img, 0, 0)
-  canvas.width = img.width * ratio
-  canvas.height = img.height * ratio
-  ctx.drawImage(canvasCopy, 0, 0, canvasCopy.width, canvasCopy.height, 0, 0, canvas.width, canvas.height)
-}
-
-
-function imageCapture() {
-  var options = {limit: 1};
-  navigator.device.capture.captureImage(onSuccess, onError, options);
-}
-
-function onError(error) {
-  app.dialog.alert('Error code: ' + error.code, null, 'Capture Error');
-}
-
-function onSuccess(mediaFiles) {
-  $$('#myCanvas').show();
-  $$('#guardarAvatar').show();
-  $$('#rotar').show();
-  var canvas = $$('#myCanvas')[0];
-  var img = new Image();
-  img.src = mediaFiles[0].fullPath;
-  img.onload = function() {
-    resize_image(this,canvas,800,1200);
-  }
-}
-
-
 function refreshFinanciera(mes,a){
   app.request.setup({
     headers: {
@@ -537,6 +496,11 @@ $$(document).on('page:init', '.page[data-name="recordatorios"]', function (e) {
 });
 $$(document).on('page:init', '.page[data-name="configuracion"]', function (e) {
 
+    if(localStorage.getItem('avatar')==URL_WS+'null'){
+
+    }else{
+      $$('#avatar').attr('src',localStorage.getItem('avatar'));
+    }
     if(localStorage.getItem('recordatoriomanana')){
       $$('#togglemananas input').prop('checked', true);
       $$('#hora_manana').css('visibility','visible');
@@ -571,24 +535,50 @@ $$(document).on('page:init', '.page[data-name="configuracion"]', function (e) {
       ctx.rotate(1 * Math.PI / 90);
     });
     
-    $$('#takePhoto').on('click', function (e) {
-      var permissions = cordova.plugins.permissions;
-      permissions.requestPermission(permissions.WRITE_EXTERNAL_STORAGE, success, error);
-      function error() {
-        app.dialog.alert('Necesitas permiso de: WRITE_EXTERNAL_STORAGE ');
+    $$('#input_avatar').on('change', function (e) {
+      var preview = document.getElementById('vista_previa');
+      var file    = document.querySelector('input[type=file]').files[0];
+      var reader  = new FileReader();
+
+      reader.onloadend = function () {
+        $$('#vista_previa').show();
+        preview.src = reader.result;
+        $$('#guardarAvatar').show();
+        $$('#valor_imagen').val(reader.result);
       }
-      function success( status ) {
-        if( !status.hasPermission ){
-          error();
-        }else{
-          imageCapture();
-        }
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        preview.src = "";
       }
     });
 
 
     $$('#guardarAvatar').on('click', function (e) {
-      alert('guardar');
+      var id_usuario = localStorage.getItem('userid');
+      var valor_imagen = $$('#valor_imagen').val();
+      var jsonData = '{"id_usuario":"'+id_usuario+'","avatar":"'+valor_imagen+'"}';
+      jsonData = JSON.parse(jsonData);
+      app.request.setup({
+          headers: {
+            "apikey" : localStorage.getItem('apikey')
+          },
+          beforeSend: function () {
+            app.preloader.show();
+          },
+          complete: function(){
+            app.preloader.hide();
+          },
+          timeout : 5000
+      });
+      app.request.postJSON(URL_WS+'cambiaravatar', jsonData , function (data) {
+        $$('#valor_imagen').hide();
+        $$('#vista_previa').hide();
+        $$('#avatar').attr('src',data.url);
+        $$('#guardarAvatar').hide();
+        $$('#parrafoinput').hide();
+        localStorage.setItem('avatar', data.url);
+      });
     });
 
 
@@ -756,6 +746,55 @@ var correo = $$('#my-login-screen [name="username"]').val();
 
 
 
+$$(document).on('page:init', '.page[data-name="tareasdiarias"]', function (e) {
+  app.request.setup({
+    headers: {
+      "apikey" : localStorage.getItem('apikey')
+    },
+    beforeSend: function () {
+      app.preloader.show();
+    },
+    complete: function(){
+      app.preloader.hide();
+    },
+    timeout : 15000
+  });
+  app.request.get(URL_WS+'avance_usuario/'+localStorage.getItem('userid'), function (data) {
+    var metas = data.array_no_revisadas;
+    var output = '';
+    metas.forEach(function(v,i){
+      output += '<div class="card"><div class="card-header">'+v.tarea+'</div><div class="card-content"><p class="tac">'+v.ambito+'</p><p class="tac">¿Lograste hacer esta tarea el día de hoy?</p><div class="w50"><a href="#" class="lograda" data-info="'+v.tarea+'|'+localStorage.getItem('userid')+'"><i class="material-icons">check</i></a></div><div class="w50"><a href="#" class="no_lograda" data-info="'+v.tarea+'|'+localStorage.getItem('userid')+'"><i class="material-icons">close</i></a></div></div><div class="card-footer">'+v.meta+'</div></div>';
+    });
+    $$('#content_tareas').html(output);
+    $$('.no_lograda').on('click', function (e) {
+      e.preventDefault();
+
+    }); 
+    $$('.lograda').on('click', function (e) {
+      e.preventDefault();
+      var jsonData = '{"info":"'+$$(this).attr('data-info')+'"}';
+      jsonData = JSON.parse(jsonData);
+      app.request.setup({
+          headers: {
+            "apikey" : localStorage.getItem('apikey')
+          },
+          beforeSend: function () {
+            app.preloader.show();
+          },
+          complete: function(){
+            app.preloader.hide();
+          },
+          timeout : 5000
+      });
+      app.request.postJSON(URL_WS+'lograrmeta', jsonData , function (data) {
+        console.log(data);
+      });
+    }); 
+  },
+  'json');
+});
+
+
 $$('#my-login-screen .login-button').on('click', function () {
   var correo = $$('#my-login-screen [name="username"]').val();
   var password = $$('#my-login-screen [name="password"]').val();
@@ -779,7 +818,7 @@ $$('#my-login-screen .login-button').on('click', function () {
       localStorage.setItem('auth', 'true');
       localStorage.setItem('apikey', data[0].apikey);
       localStorage.setItem('userid', data[0].user_id);
-      localStorage.setItem('avatar', data[0].avatar);
+      localStorage.setItem('avatar', URL_WS+data[0].avatar);
       localStorage.setItem('correo', data[0].correo);
       app.loginScreen.close('#my-login-screen');
       app.views.main.router.navigate('/inicio/', {reloadCurrent: false});

@@ -1,6 +1,5 @@
 
 import HomePage from '../pages/home.f7.html';
-import DashboardPage from '../pages/dashboard.f7.html';
 import SaludfinancieraPage from '../pages/saludfinanciera.f7.html';
 import MetasPage from '../pages/metas.f7.html';
 import MetaPage from '../pages/meta.f7.html';
@@ -20,10 +19,6 @@ var routes = [
       } 
       resolve(); 
     }
-  },
-  {
-    path: '/inicio/',
-    component: DashboardPage,
   },
   {
     path: '/saludfinanciera/',

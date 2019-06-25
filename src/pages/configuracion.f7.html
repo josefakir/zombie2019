@@ -35,8 +35,11 @@
       <div class="block">
         <img src="static/images/default-user-avatar.png" alt="" id="avatar">
         <p>&nbsp;</p>
-        <a href="#" id="takePhoto" class="col button button-raised button-fill">Cambiar Avatar</a>
-        <canvas id="myCanvas"></canvas>
+        <p class="tac" id="parrafoinput">Cambiar Avatar: <input type="file" id="input_avatar"></p>
+        <p class="tac">
+          <img src="" height="200" alt="Vista Previa" id="vista_previa">
+          <input type="hidden" id="valor_imagen">
+        </p>
         <p class="tac"><a href="" id="rotar"><i class="material-icons">rotate_right</i></a></p>
         <a href="#" id="guardarAvatar" class="col button button-raised button-fill">Guardar Avatar</a>
         <h1 id="correo"></h1>
@@ -58,7 +61,7 @@
                 <div class="item-content item-input">
                   <div class="item-inner">
                     <div class="item-input-wrap">
-                      <input type="text" placeholder="Elige la hora" readonly="readonly" id="demo-picker-describe"/>
+                      <input type="text" placeholder="Elige la hora" readonly="readonly" id="demo-picker-describe" style="background: #F7F7F8" />
                     </div>
                   </div>
                 </div>
@@ -81,7 +84,7 @@
                 <div class="item-content item-input">
                   <div class="item-inner">
                     <div class="item-input-wrap">
-                      <input type="text" placeholder="Elige la hora" readonly="readonly" id="demo-picker-describe2"/>
+                      <input type="text" placeholder="Elige la hora" readonly="readonly" id="demo-picker-describe2"  style="background: #F7F7F8"/>
                     </div>
                   </div>
                 </div>
